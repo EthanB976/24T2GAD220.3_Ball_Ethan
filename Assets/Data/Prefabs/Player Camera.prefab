@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1988199425221221586}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -171,9 +171,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   cameraObject: {fileID: 122557744334749221}
+  cameraPivotTransform: {fileID: 6626261193456787845}
   leftAndRightRotationSpeed: 220
   upAndDownRotationSpeed: 220
   minimumPivot: -30
   maximumPivot: 60
+  cameraCollisionRadius: 0.2
+  collideWithLayers:
+    serializedVersion: 2
+    m_Bits: 1
   leftAndRightLookAngle: 0
   upAndDownLookAngle: 0

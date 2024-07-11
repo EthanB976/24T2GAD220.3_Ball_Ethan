@@ -1245,6 +1245,10 @@ PrefabInstance:
       propertyPath: cameraPivotTransform
       value: 
       objectReference: {fileID: 220296765}
+    - target: {fileID: -6979433733865407415, guid: 89a60006960b0cc48bd5555d0a119b2a, type: 3}
+      propertyPath: collideWithLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3326059058751593413, guid: 89a60006960b0cc48bd5555d0a119b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1284,10 +1288,6 @@ PrefabInstance:
     - target: {fileID: 3326059058751593413, guid: 89a60006960b0cc48bd5555d0a119b2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5134144342560201677, guid: 89a60006960b0cc48bd5555d0a119b2a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6626261193456787845, guid: 89a60006960b0cc48bd5555d0a119b2a, type: 3}
       propertyPath: m_LocalPosition.y
