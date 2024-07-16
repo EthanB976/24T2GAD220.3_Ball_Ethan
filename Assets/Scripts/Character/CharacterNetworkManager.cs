@@ -17,6 +17,11 @@ namespace EB
         public Vector3 networkpositionVelocity;
         public float networkPositionSmoothTime = 0.1f;
         public float networkRotationSmoothTime = 0.1f;
+
+        [Header("Animator")]
+        public NetworkVariable<float> horizontalMovement = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        public NetworkVariable<float> verticalMovement = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+        public NetworkVariable<float> networkMoveAmout = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     }
 }
 

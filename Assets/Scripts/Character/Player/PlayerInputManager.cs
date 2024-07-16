@@ -8,10 +8,18 @@ namespace EB
     public class PlayerInputManager : MonoBehaviour
     {
         public static PlayerInputManager instance;
+
+        public PlayerManager player;
+
         // think about goals in steps
         // move character based on those values
 
         PlayerControls playerControls;
+
+        [Header("Camera Movement Input")]
+        [SerializeField] Vector2 cameraInput;
+        public float cameraHorizontalInput;
+        public float cameraVerticalInput;
 
         [Header("Player Movement Input")]
         [SerializeField] Vector2 movementInput;
@@ -19,10 +27,8 @@ namespace EB
         public float verticalInput;
         [SerializeField] public float moveAmout;
 
-        [Header("Camera Movement Input")]
-        [SerializeField] Vector2 cameraInput;
-        public float cameraHorizontalInput;
-        public float cameraVerticalInput;
+        [Header("Player Actions Input")]
+        [SerializeField] bool dodgeInput = false;
 
         private void Awake()
         {
@@ -69,6 +75,7 @@ namespace EB
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerCamera.CameraControls.performed += i => cameraInput = i.ReadValue<Vector2>();
+                playerControls.PlayerActions.Dodge.performed += instance => dodgeInput = true;
             }
 
             playerControls.Enable();
@@ -119,12 +126,30 @@ namespace EB
             {
                 moveAmout = 1;
             }
+
+            // Why do we pass 0 on the horizontal? because we only want non-strafing movement
+            // we use the horizontal when we are strafing or locked on
+
+            if (player == null)
+            {
+                return;
+            }
+
+            // if we are not locked on, only use the move amout
+            player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmout);
+
+            // if we are locked on pass the horizontal movement as well
         }
 
         private void HandleCameraMovementInput()
         {
             cameraVerticalInput = cameraInput.y;
             cameraHorizontalInput = cameraInput.x;
+        }
+
+        private void HandleDodgeinput()
+        {
+
         }
     }
 }

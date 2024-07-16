@@ -24,6 +24,27 @@ namespace EB
 
             playerManager = GetComponent<PlayerManager>();
         }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            if (playerManager.IsOwner)
+            {
+                playerManager.characterNetworkManager.verticalMovement.Value = verticalMovement;
+                playerManager.characterNetworkManager.horizontalMovement.Value = horizontalMovement;
+                playerManager.characterNetworkManager.networkMoveAmout.Value = moveAmout;
+            }
+            else
+            {
+                verticalMovement = playerManager.characterNetworkManager.verticalMovement.Value;
+                horizontalMovement = playerManager.characterNetworkManager.horizontalMovement.Value;
+                moveAmout = playerManager.characterNetworkManager.networkMoveAmout.Value;
+
+                // if not locked on, pass move amout
+                playerManager.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmout);
+            }
+        }
         public void HandleAllMovement()
         {
             // ground movement
@@ -33,17 +54,18 @@ namespace EB
             // aerial movement
         }
 
-        private void GetVerticalAndHorizontalInputs()
+        private void GetMovementValues()
         {
             verticalMovement = PlayerInputManager.instance.verticalInput;
             horizontalMovement = PlayerInputManager.instance.horizontalInput;
+            moveAmout = PlayerInputManager.instance.moveAmout;
 
             //clamo the movements
         }
 
         private void HandleGroundedMovement()
         {
-            GetVerticalAndHorizontalInputs();
+            GetMovementValues();
 
             // our movement direction is based on our camera direction and our movement inputs
             moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;

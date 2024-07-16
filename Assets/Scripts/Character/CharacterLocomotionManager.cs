@@ -10,6 +10,11 @@ namespace EB
         {
 
         }
+
+        protected virtual void Update()
+        {
+
+        }
     }
 }
 
