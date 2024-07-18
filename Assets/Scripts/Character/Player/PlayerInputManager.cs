@@ -75,7 +75,7 @@ namespace EB
 
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
                 playerControls.PlayerCamera.CameraControls.performed += i => cameraInput = i.ReadValue<Vector2>();
-                playerControls.PlayerActions.Dodge.performed += instance => dodgeInput = true;
+                //playerControls.PlayerActions.Dodge.performed += instance => dodgeInput = true;
             }
 
             playerControls.Enable();
